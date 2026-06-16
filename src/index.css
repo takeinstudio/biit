@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 33% 98%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 355 78% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 24% 96%;
+    --secondary-foreground: 222 47% 11%;
+    --muted: 220 22% 95%;
+    --muted-foreground: 220 10% 38%;
+    --accent: 355 72% 45%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 16% 88%;
+    --input: 220 16% 88%;
+    --ring: 355 78% 50%;
+    --radius: 0.75rem;
+    --sidebar-background: 220 33% 98%;
+    --sidebar-foreground: 222 47% 11%;
+    --sidebar-primary: 355 78% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 24% 96%;
+    --sidebar-accent-foreground: 222 47% 11%;
+    --sidebar-border: 220 16% 88%;
+    --sidebar-ring: 355 78% 50%;
+
+    --font-heading: 'Poppins', sans-serif;
+    --font-body: 'Inter', sans-serif;
+
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --duration-fast: 150ms;
+    --duration-smooth: 350ms;
+
+    --shadow-card: 0 0 0 1px rgba(0,0,0,0.04), 0 2px 4px rgba(0,0,0,0.04), 0 12px 24px rgba(0,0,0,0.06);
+    --shadow-card-hover: 0 0 0 1px rgba(0,0,0,0.04), 0 4px 8px rgba(0,0,0,0.06), 0 24px 48px rgba(0,0,0,0.1);
+    --shadow-button: 0 4px 14px rgba(226,29,47,0.3);
+    --shadow-button-hover: 0 6px 20px rgba(226,29,47,0.45);
+
+    --gradient-hero: linear-gradient(120deg, #0b1224 0%, #3a0e23 42%, #e21d2f 100%);
+    --gradient-hero-overlay: linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 100%);
+    --gradient-red: linear-gradient(135deg, hsl(355 78% 50%) 0%, hsl(355 78% 40%) 100%);
+    --gradient-dark: linear-gradient(135deg, #1a1a1a 0%, #2A2A2A 100%);
+  }
+
+  .dark {
+    --background: 0 0% 7%;
+    --foreground: 0 0% 95%;
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 95%;
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 355 78% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 95%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
+    --accent: 355 72% 45%;
+    --accent-foreground: 0 0% 100%;
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 355 78% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+  }
+}
+
+@layer components {
+  .section-padding {
+    @apply px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24;
+  }
+  .section-muted {
+    @apply bg-secondary;
+  }
+  .container-max {
+    @apply max-w-7xl mx-auto;
+  }
+  .heading-xl {
+    @apply text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight;
+    font-family: var(--font-heading);
+  }
+  .heading-lg {
+    @apply text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight;
+    font-family: var(--font-heading);
+  }
+  .heading-md {
+    @apply text-xl sm:text-2xl font-semibold tracking-tight;
+    font-family: var(--font-heading);
+  }
+  .text-body {
+    @apply text-sm sm:text-base leading-relaxed text-muted-foreground;
+  }
+  .btn-primary {
+    @apply bg-primary text-primary-foreground px-6 py-3 rounded-full font-semibold text-sm transition-all duration-300;
+    box-shadow: var(--shadow-button);
+  }
+  .btn-primary:hover {
+    box-shadow: var(--shadow-button-hover);
+    @apply brightness-90;
+  }
+  .btn-outline {
+    @apply border-2 border-foreground/20 text-foreground px-6 py-3 rounded-full font-semibold text-sm transition-all duration-300 hover:border-primary hover:text-primary;
+  }
+  .btn-accent {
+    @apply bg-accent text-accent-foreground px-6 py-3 rounded-full font-semibold text-sm transition-all duration-300;
+  }
+  .card-premium {
+    @apply bg-card rounded-3xl overflow-hidden transition-all duration-300;
+    box-shadow: var(--shadow-card);
+  }
+  .card-premium:hover {
+    box-shadow: var(--shadow-card-hover);
+  }
+  .glass {
+    @apply bg-background/80 backdrop-blur-xl;
+  }
+  .glass-dark {
+    @apply bg-foreground/80 backdrop-blur-xl;
+  }
+  .section-label {
+    @apply text-xs uppercase tracking-[0.2em] font-semibold text-primary mb-4 inline-block;
+  }
+  .red-thread {
+    @apply fixed top-0 left-0 h-[2px] bg-primary z-[60];
+    transition: width 100ms linear;
+  }
+  .noise-overlay::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+}
+
+@layer utilities {
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
